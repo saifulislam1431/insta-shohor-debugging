@@ -12,7 +12,7 @@ const getReportedPosts = () => {
 };
 
 const isLiked = (id) => {
-    return likedPostsId ? .length && !!likedPostsId.includes(id);
+    return likedPostsId?.length && !!likedPostsId.includes(id);
 };
 
 const addToLiked = (id) => {
@@ -21,7 +21,7 @@ const addToLiked = (id) => {
 };
 
 const reportPost = (id) => {
-    reportedPostsId.push(id);
+    reportedPostsId.push(id);  
     const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
     showPosts(remainingPosts);
 };
@@ -52,6 +52,8 @@ const switchTab = (id) => {
 
 const createPost = (post) => {
     console.log(post);
+    const userImage = post.userImage
+   
     const image = post.image;
     const div = document.createElement("article");
     div.classList.add("post");
@@ -63,9 +65,9 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${userImage}" alt="User Picture" />
                   </a>
-                  <a href="#" class="post__user">phero</a>
+                  <a href="#" class="post__user">${userName}</a>
                 </div>
 
                 <button class="post__more-options">
